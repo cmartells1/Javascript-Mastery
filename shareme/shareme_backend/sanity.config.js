@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'oldlace-raven',
+  title: 'shareme_jsm',
 
   projectId: 'e2z052jo',
   dataset: 'shareme_jsm',

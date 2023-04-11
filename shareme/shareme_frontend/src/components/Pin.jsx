@@ -20,10 +20,11 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
 		if (!alreadySaved) {
 			setSavingPost(true);
 			console.log(id);
+			console.log(_id);
 			client
 				.patch(id)
 				.setIfMissing({ save: [] })
-				.insert('after', 'save[-1],', [
+				.insert('after', 'save[-1]', [
 					{
 						_key: uuidv4(),
 						userId: user.sub,
@@ -33,10 +34,13 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
 						},
 					},
 				])
-				.commit()
+				.commit({ autoGenerateArrayKeys: true })
 				.then(() => {
 					window.location.reload();
 					setSavingPost(false);
+				})
+				.catch(err => {
+					console.log(err);
 				});
 		}
 	};
