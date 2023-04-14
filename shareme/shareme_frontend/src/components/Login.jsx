@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-	GoogleLogin,
-	GoogleOAuthProvider,
-	googleLogout,
-} from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import shareVideo from '../assets/share.mp4';
@@ -31,36 +27,35 @@ const Login = () => {
 	};
 
 	return (
-		<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}>
-			<div className='flex justify-start item-center flex-col h-screen'>
-				<div className='relative w-full h-full'>
-					<video
-						src={shareVideo}
-						type='video/mp4'
-						loop
-						controls={false}
-						muted
-						autoPlay
-						className='w-full h-full object-cover'
-					/>
+		<div className='flex justify-start item-center flex-col h-screen'>
+			<div className='relative w-full h-full'>
+				<video
+					src={shareVideo}
+					type='video/mp4'
+					loop
+					controls={false}
+					muted
+					autoPlay
+					className='w-full h-full object-cover'
+				/>
 
-					<div className='absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay'>
-						<div className='p-5'>
-							<img
-								src={logo}
-								width='130px'
-								alt='logo'
-							/>
-						</div>
+				<div className='absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay'>
+					<div className='p-5'>
+						<img
+							src={logo}
+							width='130px'
+							alt='logo'
+						/>
+					</div>
 
-						<div className='shadow-2xl'>
-							<GoogleLogin
-								onSuccess={responseGoogle}
-								onError={reponse => console.log('error')}
-								cookiePolicy='single_host_origin'
-							/>
+					<div className='shadow-2xl'>
+						<GoogleLogin
+							onSuccess={responseGoogle}
+							onError={reponse => console.log('error')}
+							cookiePolicy='single_host_origin'
+						/>
 
-							{/* <GoogleLogin
+						{/* <GoogleLogin
 							clientid=''
 							render={renderProps => (
 								<button
@@ -73,11 +68,10 @@ const Login = () => {
 								</button>
 							)}
 							/> */}
-						</div>
 					</div>
 				</div>
 			</div>
-		</GoogleOAuthProvider>
+		</div>
 	);
 };
 
