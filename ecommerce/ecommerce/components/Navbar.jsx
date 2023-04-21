@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { AiOutlineShopping } from 'react-icons/ai';
 
+import { Cart } from './';
+
 const Navbar = () => {
 	return (
 		<div className='navbar-container'>
@@ -15,8 +17,10 @@ const Navbar = () => {
 				onClick=''
 			>
 				<AiOutlineShopping />
-				<span className='cart-item-qty'>1</span>
+				<span className='cart-item-qty'>0</span>
 			</button>
+
+			<Cart />
 		</div>
 	);
 };
